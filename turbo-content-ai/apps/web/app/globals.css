@@ -1,50 +1,72 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+     --gradient: #799F0C;
+
+    --background: 80 55.9% 2.72%;
+    --foreground: 80 8.6% 96.7%;
+
+    --muted: 80 42.14% 0%;
+    --muted-foreground: 80 8.6% 53.4%;
+
+    --popover: 80 47.8% 4.42%;
+    --popover-foreground: 80 8.6% 96.7%;
+
+    --card: 80 47.8% 4.42%;
+    --card-foreground: 80 8.6% 96.7%;
+
+    --border: 80 42.14% 0%;
+    --input: 80 42.14% 0%;
+
+    --primary: 80 86% 34%;
+    --primary-foreground: 80 8.6% 96.7%;
+
+    --secondary: 80 42.14% 0%;
+    --secondary-foreground: 80 8.6% 96.7%;
+
+    --accent: 80 42.14% 0%;
+    --accent-foreground: 80 8.6% 96.7%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 80 8.6% 96.7%;
+
+    --ring: 80 86% 34%;
   }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.imgDark {
-  display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+  }
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%
   }
 
-  .imgLight {
-    display: none;
+@layer base {
+  * {
+    @apply border-border;
   }
-  .imgDark {
-    display: unset;
+  body {
+    @apply bg-background text-foreground;
   }
 }
