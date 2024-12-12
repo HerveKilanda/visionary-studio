@@ -11,6 +11,9 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@clerk/localizations": "^3.9.0",
+    "@clerk/nextjs": "^6.6.0",
+    "@clerk/themes": "^2.2.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@repo/ui": "workspace:*",
     "class-variance-authority": "^0.7.1",

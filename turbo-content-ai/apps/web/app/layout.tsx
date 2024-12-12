@@ -1,6 +1,19 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Jost from "next/font/google";    
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+import { frFR } from "@clerk/localizations";
+import { Navbar } from "./components/Navbar";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"], weight: ["400", "700"] });
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -10,6 +23,10 @@ const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
 });
+const parkisans = localFont({
+  src: "./fonts/Parkinsans-Medium.ttf",
+  variable: "--font-paarkisans",
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,10 +39,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
-    </html>
+    <ClerkProvider localization={frFR}>
+      <html lang="en">
+        <body className={`${inter.className}  overflow-hidden`}>
+          <Navbar />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

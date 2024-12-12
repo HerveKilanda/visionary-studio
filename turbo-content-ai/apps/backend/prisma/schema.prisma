@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                Int                @id @default(autoincrement())
+  stripeCustomerId  String             @map("stripe_customer_id") @db.Text()
+  email             String             @unique
+  name              String
+  points            Int                @default(50)
+  createdAt         DateTime           @default(now())
+  subscriptions     Subscriptions[]
+  generatedContents GeneratedContent[]
+}
+
+model Subscriptions {
+  id                   Int      @id @default(autoincrement())
+  userId               Int
+  user                 User     @relation(fields: [userId], references: [id])
+  stripeSubscriptionId String   @map("stripe_subscription_id") @db.Text()
+  plan                 String   @map("status") @db.Char(50)
+  currentPeriodStart   DateTime @map("current_period_start")
+  currentPeriodEnd     DateTime @map("current_period_end")
+  cancelAtPeriodEnd    Boolean  @default(false) @map("cancel_at_period_end")
+}
+
+model GeneratedContent {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+  content     String   @map("content") @db.Text()
+  createdAt   DateTime @default(now())
+  prompt      String   @map("prompt") @db.Text()
+  contentType String   @map("content_type") @db.Char(50)
+}
