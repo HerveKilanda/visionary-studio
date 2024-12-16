@@ -70,3 +70,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Navbar.css */
+.navbar {
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar.show {
+  transform: translateY(0);
+}
+
+.navbar.hide {
+  transform: translateY(-100%);
+}

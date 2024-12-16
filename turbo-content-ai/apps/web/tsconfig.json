@@ -11,6 +11,7 @@
       "@/*": ["./app/*"] // Alias pour raccourcir les imports
     }
   },
+      "strict": false,
   "include": [
     "next-env.d.ts",
     "next.config.js",
